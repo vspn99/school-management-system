@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 function StudentList() {
   const [students, setStudents] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetchStudents();
@@ -20,67 +21,100 @@ function StudentList() {
       console.error("API Error:", error);
     }
   };
+
   const deleteStudent = async (id) => {
-  try {
-    await axios.delete(
-      `http://127.0.0.1:8000/api/students/${id}`
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this student?"
     );
 
-    fetchStudents();
-  } catch (error) {
-    console.error(error);
-  }
-};
+    if (!confirmDelete) return;
+
+    try {
+      await axios.delete(
+        `http://127.0.0.1:8000/api/students/${id}`
+      );
+
+      fetchStudents();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const filteredStudents = students.filter((student) =>
+    student.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Student List</h1>
+    <div className="container mt-5">
 
-      <br />
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2>Student List</h2>
 
-      <Link to="/add-student">
-        <button>Add Student</button>
-      </Link>
+        <Link
+          to="/add-student"
+          className="btn btn-success"
+        >
+          + Add Student
+        </Link>
+      </div>
 
-      <br />
-      <br />
+      <input
+        type="text"
+        className="form-control mb-3"
+        placeholder="Search Student..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
 
-      <table border="1" cellPadding="10">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Grade</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {students.map((student) => (
-            <tr key={student.id}>
-              <td>{student.id}</td>
-              <td>{student.name}</td>
-              <td>{student.age}</td>
-              <td>{student.grade}</td>
-
-              <td>
-                <Link to={`/edit-student/${student.id}`}>
-  <button>Edit</button>
-</Link>
-
-                {" "}
-
-                <button
-  onClick={() => deleteStudent(student.id)}
->
-  Delete
-</button>
-              </td>
+      {filteredStudents.length === 0 ? (
+        <div className="alert alert-warning">
+          No students found
+        </div>
+      ) : (
+        <table className="table table-hover table-bordered shadow">
+          <thead className="table-dark">
+            <tr>
+              
+              <th>Name</th>
+              <th>Age</th>
+              <th>Grade</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {filteredStudents.map((student) => (
+              <tr key={student.id}>
+                
+                <td>{student.name}</td>
+                <td>{student.age}</td>
+                <td>{student.grade}</td>
+
+                <td>
+                  <Link
+                    to={`/edit-student/${student.id}`}
+                    className="btn btn-warning btn-sm me-2"
+                  >
+                    Edit
+                  </Link>
+
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() =>
+                      deleteStudent(student.id)
+                    }
+                  >
+                    Delete
+                  </button>
+                </td>
+
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }

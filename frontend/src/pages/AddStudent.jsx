@@ -9,6 +9,11 @@ function AddStudent() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!name || !age || !grade) {
+      alert("Please fill all fields");
+      return;
+    }
+
     try {
       await axios.post(
         "http://127.0.0.1:8000/api/students",
@@ -25,53 +30,89 @@ function AddStudent() {
       setAge("");
       setGrade("");
     } catch (error) {
-    console.error(error);
-    alert("Error adding student");
+      console.error(error);
+      alert("Error adding student");
     }
   };
 
   return (
-    <div>
-      <h1>Add Student</h1>
+    <div className="container mt-5">
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+      <div className="row justify-content-center">
+
+        <div className="col-md-6">
+
+          <div className="card shadow p-4">
+
+            <h2 className="text-center mb-4">
+              Add Student
+            </h2>
+
+            <form onSubmit={handleSubmit}>
+
+              <div className="mb-3">
+                <label className="form-label">
+                  Student Name
+                </label>
+
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Student Name"
+                  value={name}
+                  onChange={(e) =>
+                    setName(e.target.value)
+                  }
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">
+                  Age
+                </label>
+
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter Age"
+                  value={age}
+                  onChange={(e) =>
+                    setAge(e.target.value)
+                  }
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">
+                  Grade
+                </label>
+
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Grade"
+                  value={grade}
+                  onChange={(e) =>
+                    setGrade(e.target.value)
+                  }
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn-success w-100"
+              >
+                Add Student
+              </button>
+
+            </form>
+
+          </div>
+
         </div>
 
-        <br />
+      </div>
 
-        <div>
-          <input
-            type="number"
-            placeholder="Age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </div>
-
-        <br />
-
-        <div>
-          <input
-            type="text"
-            placeholder="Grade"
-            value={grade}
-            onChange={(e) => setGrade(e.target.value)}
-          />
-        </div>
-
-        <br />
-
-        <button type="submit">
-          Add Student
-        </button>
-      </form>
     </div>
   );
 }
