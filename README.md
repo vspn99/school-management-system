@@ -42,7 +42,7 @@ A full-stack School Management System developed using React, FastAPI, SQLite, an
 
 ## Test Credentials
 
-Email: [admin@gmail.com]
+Email: admin@gmail.com
 
 Password: admin123
 
