@@ -25,6 +25,10 @@ class Student(BaseModel):
     age: int
     grade: str
 
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
 def get_db():
     db = SessionLocal()
     try:
@@ -35,6 +39,23 @@ def get_db():
 @app.get("/")
 def home():
     return {"message": "School Management System Backend Running"}
+
+@app.post("/api/login")
+def login(data: LoginRequest):
+
+    if (
+        data.email == "admin@gmail.com"
+        and data.password == "admin123"
+    ):
+        return {
+            "success": True,
+            "message": "Login Successful"
+        }
+
+    return {
+        "success": False,
+        "message": "Invalid Credentials"
+    }
 
 @app.get("/api/students")
 def get_students(db: Session = Depends(get_db)):
