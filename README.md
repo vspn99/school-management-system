@@ -72,7 +72,7 @@ cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
-## 🧠 Backend
+##  Backend
 
 Backend runs at:  
 http://127.0.0.1:8000  
