@@ -62,19 +62,20 @@ A full-stack Student Management System built using **React (Frontend)** and **Fa
 cd frontend
 npm install
 npm run dev
-
+```
 ### Frontend runs at:
 http://localhost:5173
 
-🧠 Backend
+### Backend
+```bash
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload
-
-Backend runs at:
+```
+### Backend runs at:
 http://127.0.0.1:8000
 
-🗄️ Database
+##🗄️Database
 
 The project uses SQLAlchemy ORM for database management.
 
@@ -84,10 +85,10 @@ models.Base.metadata.create_all(bind=engine)
 
 No manual SQL setup is required.
 
-🌍 Deployment
+##🌍Deployment
 Frontend hosted on Vercel
 Backend hosted on Render
-📁 Project Structure
+##📁 Project Structure
 school-management-system/
 │
 ├── frontend/
