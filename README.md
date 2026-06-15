@@ -4,7 +4,7 @@
 
 A full-stack School Management System developed using React, FastAPI, SQLite, and SQLAlchemy. The application allows users to manage student records through a responsive web interface.
 
-## 🚀 Live Demo
+##  Live Demo
 
 - Frontend: https://school-management-system-amber-five.vercel.app  
 - Backend: https://school-management-system-z30p.onrender.com  
@@ -77,6 +77,12 @@ npm install
 ```bash
 npm run dev
 ```
+
+##  Deployment
+
+- Frontend hosted on Vercel  
+- Backend hosted on Render  
+
 
 ## Project Structure
 
