@@ -12,7 +12,7 @@ function Dashboard() {
   const fetchStudents = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/students"
+        "https://school-management-system-z30p.onrender.com/api/students"
       );
 
       setStudentCount(response.data.length);
