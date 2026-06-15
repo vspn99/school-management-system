@@ -74,20 +74,22 @@ uvicorn main:app --reload
 ```
 ### Backend runs at:
 http://127.0.0.1:8000
-
+---
 ## 🗄️Database
-
 The project uses SQLAlchemy ORM for database management.
-
 Tables are automatically created using:
-
+```bash
 models.Base.metadata.create_all(bind=engine)
-
+```
 No manual SQL setup is required.
 
+---
 ## 🌍Deployment
 Frontend hosted on Vercel
 Backend hosted on Render
+
+---
+
 ## 📁 Project Structure
 ### school-management-system/
 │
@@ -101,7 +103,9 @@ Backend hosted on Render
 │   ├── database.py
 │
 └── README.md
+---
+
 ## 👨‍💻 Author
 
-Vishnu Priya
-B.Tech AI & Data Science
+### Vishnu Priya
+### B.Tech AI & Data Science
