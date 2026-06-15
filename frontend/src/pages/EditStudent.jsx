@@ -17,7 +17,7 @@ function EditStudent() {
   const loadStudent = async () => {
     try {
       const response = await axios.get(
-        "http://school-management-system-z30p.onrender.com/api/students"
+        "https://school-management-system-z30p.onrender.com/api/students"
       );
 
       const student = response.data.find(
@@ -44,7 +44,7 @@ function EditStudent() {
 
     try {
       await axios.put(
-        `http://school-management-system-z30p.onrender.com/api/students/${id}`,
+        `https://school-management-system-z30p.onrender.com/api/students/${id}`,
         {
           name,
           age: Number(age),
