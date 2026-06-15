@@ -10,6 +10,13 @@ A full-stack School Management System developed using React, FastAPI, SQLite, an
 - Backend: https://school-management-system-z30p.onrender.com  
 
 
+## Test Credentials
+
+Email: [admin@gmail.com](mailto:admin@gmail.com)
+
+Password: admin123
+
+
 ## Features
 
 * User Login
@@ -46,11 +53,6 @@ A full-stack School Management System developed using React, FastAPI, SQLite, an
 * PUT /api/students/{id}
 * DELETE /api/students/{id}
 
-## Test Credentials
-
-Email: [admin@gmail.com](mailto:admin@gmail.com)
-
-Password: admin123
 
 ## Setup Instructions
 
@@ -63,6 +65,8 @@ Password: admin123
 ```bash
 uvicorn main:app --reload
 ```
+Backend runs at:  
+http://127.0.0.1:8000  
 
 ### Frontend
 
@@ -77,6 +81,9 @@ npm install
 ```bash
 npm run dev
 ```
+Frontend runs at:  
+http://localhost:5173  
+
 
 ##  Deployment
 
@@ -84,17 +91,19 @@ npm run dev
 - Backend hosted on Render  
 
 
-## Project Structure
+## 📁 Project Structure
 
-```text
-SchoolManagementSystem/
+```text id="structfix2"
+school-management-system/
+│
+├── frontend/
+│   ├── src/
+│   └── pages/
 │
 ├── backend/
 │   ├── main.py
 │   ├── models.py
 │   ├── database.py
-│
-├── frontend/
 │
 └── README.md
 ```
