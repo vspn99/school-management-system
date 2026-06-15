@@ -18,7 +18,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/login",
+        "http://school-management-system-z30p.onrender.com/api/login",
         {
           email,
           password,

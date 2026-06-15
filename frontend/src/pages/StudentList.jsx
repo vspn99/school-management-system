@@ -13,7 +13,7 @@ function StudentList() {
   const fetchStudents = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/students"
+        "http://school-management-system-z30p.onrender.com/api/students"
       );
 
       setStudents(response.data);
@@ -31,7 +31,7 @@ function StudentList() {
 
     try {
       await axios.delete(
-        `http://127.0.0.1:8000/api/students/${id}`
+        `http://school-management-system-z30p.onrender.com/api/students/${id}`
       );
 
       fetchStudents();

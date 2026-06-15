@@ -16,7 +16,7 @@ function AddStudent() {
 
     try {
       await axios.post(
-        "http://127.0.0.1:8000/api/students",
+        "http://school-management-system-z30p.onrender.com/api/students",
         {
           name,
           age: Number(age),
